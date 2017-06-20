@@ -1,0 +1,13 @@
+@import "bootstrap";
+@import "bootstrap-sprockets";
+@import "login";
+.password{
+    position: relative;
+}
+.password .glyphicon,#password2 .glyphicon {
+    display:none;
+    right: 15px;
+    position: absolute;
+    top: 12px;
+    cursor:pointer;
+}
