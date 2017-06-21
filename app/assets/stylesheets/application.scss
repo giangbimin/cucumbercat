@@ -1,10 +1,12 @@
 @import "bootstrap";
 @import "bootstrap-sprockets";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "login";
-.password{
+.password, .password_confirm{
     position: relative;
 }
-.password .glyphicon,#password2 .glyphicon {
+.password .glyphicon,#password2 .glyphicon, .password_confirm .glyphicon {
     display:none;
     right: 15px;
     position: absolute;

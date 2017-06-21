@@ -4,40 +4,38 @@
   <div class="logo">register</div>
   <!-- Main Form -->
   <div class="login-form-1">
-    <form id="register-form" class="text-left">
+    <%= form_for @user, id: "register-form", class: "text-left" do |f| %>
       <div class="login-form-main-message"></div>
       <div class="main-login-form">
         <div class="login-group">
           <div class="form-group">
-            <label for="reg_username" class="sr-only">Email address</label>
-            <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="username">
+            <%= f.label :name, for: 'reg_username', class: "sr-only"%>
+            <%= f.text_field :name, for: 'reg_username',id: "reg_username", class: "form-control", placeholder: "username"%>
           </div>
           <div class="form-group">
-            <label for="reg_password" class="sr-only">Password</label>
+            <%= f.label :password, for: 'reg_password', class: "sr-only"%>
             <div class="password">
-              <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="password">
+              <%= f.password_field :password, for: 'reg_password',id: "reg_password", class: "form-control", placeholder: "password"%>
               <span class="glyphicon glyphicon-eye-open"></span>
             </div>
           </div>
           <div class="form-group">
             <label for="reg_password_confirm" class="sr-only">Password Confirm</label>
-            <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
-          </div>
-          
-          <div class="form-group">
-            <label for="reg_email" class="sr-only">Email</label>
-            <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
+            <div class="password_confirm">
+              <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="confirm password">
+              <span class="glyphicon glyphicon-eye-open"></span>
+            </div>
           </div>
           <div class="form-group">
-            <label for="reg_fullname" class="sr-only">Full Name</label>
-            <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="full name">
+            <%= f.label :email, for: 'reg_email', class: "sr-only"%>
+            <%= f.text_field :email, for: 'reg_email',id: "reg_email", class: "form-control", placeholder: "email"%>
           </div>
           
           <div class="form-group login-group-checkbox">
-            <input type="radio" class="" name="reg_gender" id="male" placeholder="username">
+            <%= f.radio_button :gender,"male", id: 'male'%>
             <label for="male">male</label>
-            
-            <input type="radio" class="" name="reg_gender" id="female" placeholder="username">
+
+            <%= f.radio_button :gender, "female", id: 'female'%>
             <label for="female">female</label>
           </div>
           
@@ -49,10 +47,9 @@
         <button type="submit" class="login-button"><i class="fa fa-chevron-right"></i></button>
       </div>
       <div class="etc-login-form">
-        <p>already have an account? <a href="#">login here</a></p>
+        <p>already have an account? <%= link_to("login here", new_sessions_path) %></p>
       </div>
-    </form>
+    <% end %>
   </div>
   <!-- end:Main Form -->
 </div>
-<%= javascript_include_tag "login.js", 'data-turbolinks-track': 'reload' %>

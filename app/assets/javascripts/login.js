@@ -126,6 +126,20 @@
     }).mouseout(function(){
       $("#reg_password").attr('type','password');
   });
+    // show hide password_confirm
+  $("#reg_password_confirm").on("keyup",function(){
+    if($(this).val())
+        $(".glyphicon-eye-open").show();
+    else
+        $(".glyphicon-eye-open").hide();
+  });
+  $(".glyphicon-eye-open").mousedown(function(){
+        $("#reg_password_confirm").attr('type','text');
+    }).mouseup(function(){
+      $("#reg_password_confirm").attr('type','password');
+    }).mouseout(function(){
+      $("#reg_password_confirm").attr('type','password');
+  });
   // Loading
   //----------------------------------------------
   function remove_loading($form)
@@ -154,17 +168,17 @@
   // Dummy Submit Form (Remove this)
   //----------------------------------------------
   // This is just a dummy form submission. You should use your AJAX function or remove this function if you are not using AJAX.
-  function dummy_submit_form($form)
-  {
-    if($form.valid())
-    {
-      form_loading($form);
+  // function dummy_submit_form($form)
+  // {
+  //   if($form.valid())
+  //   {
+  //     form_loading($form);
       
-      setTimeout(function() {
-        form_success($form);
-      }, 2000);
-    }
-  }
+  //     setTimeout(function() {
+  //       form_success($form);
+  //     }, 2000);
+  //   }
+  // }
   
 
 
