@@ -285,3 +285,15 @@ label:hover:before {
   color: #aaaaaa;
   font-weight: bold;
 }
+
+/*=== 10. show password ===*/
+.password, .password_confirm{
+    position: relative;
+}
+.password .glyphicon,#password2 .glyphicon, .password_confirm .glyphicon {
+    display:none;
+    right: 15px;
+    position: absolute;
+    top: 12px;
+    cursor:pointer;
+}

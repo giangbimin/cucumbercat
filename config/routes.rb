@@ -4,4 +4,9 @@ Rails.application.routes.draw do
   resource :users
   resource :sessions, only: [:new, :create, :destroy]
   delete 'log_out' => 'sessions#destroy'
+
+  resources :conversations do
+    resources :messages
+  end
+
 end

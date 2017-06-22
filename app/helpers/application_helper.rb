@@ -1,14 +1,16 @@
 module ApplicationHelper
-  # file: application_helper.rb
-  def bootstrap_class_for flash_type
-    { success: 'alert-success', error: 'alert-danger', notice: 'alert-warning'} [flash_type.to_sym]
+  def bootstrap_class_for(flash_type)
+    { success: "alert-success", error: "alert-danger", alert: "alert-warning", notice: "alert-info" }[flash_type] || flash_type.to_s
   end
 
   def flash_messages(opts = {})
-    flash.map do |msg_type, message|
-      content_tag(:div, message, class: "alert #{bootstrap_class_for(msg_type)} fade show") do
-        content_tag(:button, 'x'.html_safe, class: 'close', data: { dismiss: 'alert' }) + message
-      end
-    end.join.html_safe
+    flash.each do |msg_type, message|
+      class_notice = bootstrap_class_for(msg_type.to_sym)
+      concat(content_tag(:div, message, class: "alert #{class_notice} fade in") do
+        concat content_tag(:button, 'x', class: "close", data: { dismiss: 'alert' })
+        concat message
+      end)
+    end
+    nil
   end
 end
