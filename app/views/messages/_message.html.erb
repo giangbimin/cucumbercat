@@ -1,0 +1,11 @@
+  <div class="message-feed <%= media_or_right(message) %>">
+      <div class="pull-<%= left_or_right(message) %>">
+          <img src="<%= message.user.avatar_url %>" alt="" class="img-avatar">
+      </div>
+      <div class="media-body">
+          <div class="mf-content">
+            <%= message.body %>
+          </div>
+          <small class="mf-date"><i class="fa fa-clock-o"></i><%= message.created_at.strftime("%Y/%m/%d") %> at <%= message.created_at.strftime("%H:%M") %></small>
+      </div>
+  </div>

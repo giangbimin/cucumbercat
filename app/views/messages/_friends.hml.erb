@@ -1,0 +1,11 @@
+ <% @friends.each_with_index do |user| %>
+  <%= link_to '#', class: 'list-group-item media start-conversation', "data-sid" => current_user.id, "data-rip" => user.id do %>
+        <div class="pull-left">
+            <img src="<%= user.avatar %>" alt="" class="img-avatar">
+        </div>
+        <div class="media-body">
+            <small class="list-group-item-heading"><%= user.name %></small>
+            <small class="list-group-item-text c-gray"><%= current_chanel.messages.last %></small>
+        </div>
+  <% end %>
+<% end %>

@@ -42,6 +42,7 @@ GEM
     autoprefixer-rails (7.1.1.2)
       execjs
     bcrypt (3.1.11)
+    bcrypt (3.1.11-x86-mingw32)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -58,6 +59,8 @@ GEM
     concurrent-ruby (1.0.5)
     erubi (1.6.0)
     execjs (2.7.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     globalid (0.4.0)
@@ -105,6 +108,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.1.1)
       actionpack (= 5.1.1)
       activesupport (= 5.1.1)
@@ -156,11 +164,13 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.2)
+  faker
   font-awesome-sass (~> 4.7.0)
   jbuilder (~> 2.5)
   jquery-rails (~> 4.1, >= 4.1.1)
   puma (~> 3.7)
   rails (~> 5.1.1)
+  rails_12factor
   sass-rails (~> 5.0)
   sqlite3
   turbolinks (~> 5)
