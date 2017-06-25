@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration[5.1]
       t.belongs_to :user, foreign_key: true
       t.belongs_to :chanel, foreign_key: true
       t.text :body
-      t.boolean :read_status
+      t.boolean :read_status, default: false
 
       t.timestamps
     end
