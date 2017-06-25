@@ -19,6 +19,23 @@ class ChanelsController < ApplicationController
     render :js
   end
 
+  def add_member
+    @chanel = Chanel.find_by(params[:id])
+    if @chanel.chanel_type == 'private'
+      new_chanel = chanel.create
+      new_chanel.user_chanels.create(@chanel.users.last.id)
+      new_chanel.user_chanels.create(@chanel.users.first.id)
+      new_chanel.user_chanels.create(params[:recipient_id])
+      new_chanel.chanel_type = 'group'
+      new_chanel.save
+      @chanel = new_chanel
+    end
+    if @chanel.chanel_type == 'group'
+      @chanel.user_chanels.create(params[:recipient_id])
+    end
+    render :js
+  end
+
   def display
     @messages = Message.chanel_messages(current_user.id, params[:id])
     @messages.update(read_status: true)
