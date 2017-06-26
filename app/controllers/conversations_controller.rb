@@ -12,8 +12,8 @@ class ConversationsController < ApplicationController
 
   def display
     @user_id = params[:user_id]
-    @friend_id = params[:recipient_id]
-    @conversation = Conversation.between(@user_id, @friend_id).first
+    @friend = User.find(params[:recipient_id])
+    @conversation = Conversation.between(@user_id, @friend.id).first
     @conversation ||= Conversation.create(sender_id: @user_id, recipient_id: @friend_id)
     @page = 10
     respond_to :js
@@ -24,6 +24,15 @@ class ConversationsController < ApplicationController
     @page = params[:page].to_i
     @page += 10
     respond_to :js
+  end
+
+  def destroy
+    @conversation = Conversation.find(params[:conversation_id])
+    if Message.where(conversation_id: @conversation.id, user_id: current_user.id).destroy_all
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'all your messsages in the conversation had destroyed.' }
+      end
+    end
   end
 
   private

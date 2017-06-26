@@ -2,56 +2,37 @@
     <div class="visible-xs" id="ms-menu-trigger">
         <i class="fa fa-bars"></i>
     </div>
-    
     <div class="pull-left hidden-xs">
-        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar m-r-10">
+        <img src="<%= friend.avatar_url || 'https://bootdey.com/img/Content/avatar/avatar2.png' %>" alt="" class="img-avatar m-r-10">
         <div class="lv-avatar pull-left">
-            
         </div>
-        <span>David Parbell</span>
+        <span><%= friend.email %></span>
     </div>
-     
     <ul class="ah-actions actions">
         <li>
-            <a href="">
-                <i class="fa fa-trash"></i>
-            </a>
+            <%= link_to conversations_path(conversation_id: @conversation), method: :delete, data: { confirm: 'Are you sure?' } do %>
+               <i class="fa fa-trash"></i>
+            <% end %>
         </li>
         <li>
-            <a href="">
+            <a href="#">
                 <i class="fa fa-check"></i>
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="#">
                 <i class="fa fa-clock-o"></i>
             </a>
-        </li>
-        <li class="dropdown">
-            <a href="" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-sort"></i>
-            </a>
-
-            <ul class="dropdown-menu dropdown-menu-right">
-                <li>
-                    <a href="">Latest</a>
-                </li>
-                <li>
-                    <a href="">Oldest</a>
-                </li>
-            </ul>
         </li>                             
         <li class="dropdown">
             <a href="" data-toggle="dropdown" aria-expanded="true">
                 <i class="fa fa-bars"></i>
-            </a>
-
             <ul class="dropdown-menu dropdown-menu-right">
                 <li>
-                    <a href="">Refresh</a>
+                    <a href="">Log out</a>
                 </li>
                 <li>
-                    <a href="">Message Settings</a>
+                    <a href="">Settings</a>
                 </li>
             </ul>
         </li>

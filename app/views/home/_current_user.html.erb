@@ -1,5 +1,4 @@
 <div class="ms-user clearfix">
   <img src="<%= current_user.avatar_url || 'https://bootdey.com/img/Content/avatar/avatar1.png'%>" alt="" class="img-avatar pull-left">
   <div>Signed in as <br><%= current_user.email %> <%= link_to 'sign out', log_out_path, method: 'delete' %></div>
-  
 </div>

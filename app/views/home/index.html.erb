@@ -10,9 +10,11 @@
           </div>
           
           <div class="ms-body">
-            <%= render 'home/topbar' %>
-            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 450px;">
-              <div class="message-list-wrapper" style="overflow-y: auto; width: auto; height: 420px;">
+            <div id="topbar">
+              <%= render 'home/topbar', friend: @friend, conversation: @conversation %>
+            </div>
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 430px;">
+              <div class="message-list-wrapper" style="overflow-y: auto; width: auto; height: 420px;" tabindex="500">
                 <div id="messages-body">
                   <%= render 'conversations/messages', conversation: @conversation, page: @page %>
                 </div>
@@ -29,3 +31,4 @@
       </div>
   </div>
 <% end %>
+<%= subscribe_to "/messages/new" %>

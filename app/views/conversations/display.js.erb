@@ -1,2 +1,3 @@
 $("#messages-body").html('<%= escape_javascript(render "conversations/messages", conversation: @conversation, page: @page ) %>');
 $('#messages-form').html('<%= escape_javascript(render "messages/form", conversation: @conversation) %>');
+$('#topbar').html('<%= escape_javascript(render "home/topbar", conversation: @conversation, friend: @friend) %>');
