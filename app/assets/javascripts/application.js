@@ -17,4 +17,3 @@
 //= require private_pub
 //= require chat
 //= require turbolinks
-//= require user

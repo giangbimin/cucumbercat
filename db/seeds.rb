@@ -1,1 +1,1 @@
-User.create!(name: "Chatty Bot", email: "chattybot@example.com", password: "12345", password_confirmation: "12345")
+User.create!(name: "faker", email: "chattybot@example.com", password: "12345678", gender:'male')

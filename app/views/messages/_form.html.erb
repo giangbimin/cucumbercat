@@ -1,0 +1,10 @@
+<%if conversation.present? %>
+<div class="msb-reply">
+  <%= simple_form_for [Conversation.new, Conversation.new.messages.build], remote: true do |f| %>
+      <%= f.text_area :body, placeholder: "What's on your mind..." %>
+      <%= f.button do %>
+        <i class="fa fa-paper-plane-o"></i>
+      <% end %>
+  <% end %>
+</div>
+<% end %>

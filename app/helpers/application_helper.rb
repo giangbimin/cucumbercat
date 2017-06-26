@@ -13,4 +13,8 @@ module ApplicationHelper
     end
     nil
   end
+
+  def chat_format_time(time)
+    time.strftime('%Y/%m/%d') + ' at ' + time.strftime('%H:%M')
+  end
 end

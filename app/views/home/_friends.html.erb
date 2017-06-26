@@ -1,0 +1,11 @@
+<% friends.each do |friend| %>
+    <%= link_to conversations_display_path(user_id: current_user.id, recipient_id: friend.id), remote: true, class: 'list-group-item media' do %>
+        <div class="pull-left">
+            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
+        </div>
+        <div class="media-body">
+            <div class="list-group-item-heading"><%= friend.email %></div>
+            <small class="list-group-item-text c-gray"><%= Conversation.last_conversation_message(current_user.id, friend.id) %></small>
+        </div>
+    <% end %>
+<% end %>

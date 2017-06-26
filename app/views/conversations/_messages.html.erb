@@ -1,0 +1,27 @@
+<%if conversation.present? %>
+    <% conversation.messages.each do |message| %>
+        <div class="message-feed <%= media_or_right(message) %>">
+            <div class="pull-<%= left_or_right(message) %>">
+                <img src="<%= message.user.avatar_url || 'https://bootdey.com/img/Content/avatar/avatar1.png' %>" alt="" class="img-avatar">
+            </div>
+            <div class="media-body">
+                <div class="mf-content">
+                    <%= message.body %>
+                </div>
+                <small class="mf-date"><i class="fa fa-clock-o"></i><%= chat_format_time(message.created_at) %></small>
+            </div>
+        </div>
+    <% end %>
+<% else %>
+    <div class="message-feed media">
+        <div class="pull-left">
+            <img src="<%= current_user.avatar_url || 'https://bootdey.com/img/Content/avatar/avatar1.png' %>"  alt="" class="img-avatar">
+        </div>
+        <div class="media-body">
+            <div class="mf-content">
+                hi ! welcome to Cucumbercat 
+            </div>
+            <small class="mf-date"><i class="fa fa-clock-o"></i> <%= chat_format_time(Time.now) %></small>
+        </div>
+    </div>
+<% end %>

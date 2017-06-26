@@ -1,6 +1,14 @@
 module MessagesHelper
   def self_or_other(message)
-    message.user == current_user ? "self" : "other"
+    message.user == current_user ? 'self' : 'other'
+  end
+
+  def media_or_right(message)
+    message.user == current_user ? 'left' : 'media'
+  end
+
+  def left_or_right(message)
+    message.user == current_user ? 'left' : 'right'
   end
 
   def message_interlocutor(message)

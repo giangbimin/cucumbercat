@@ -1,72 +1,23 @@
-<h1>Home#index</h1>
 <% if current_user.present? %>
-    <%= link_to 'sign out', log_out_path, method: 'delete' %>
-    wellcome <%= current_user.name %> !
-<% else %> 
-  <%= link_to 'sign up', new_users_path %>
-  <%= link_to 'sign in', new_sessions_path %>
-<% end %>
-<div class="row">
-  <!-- Not implemented on tutorial -->
-  <div class="col-md-4">
-    <div style="height: 300px; overflow-y: auto;">
-      <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">Registered Users</div>
-
-        <!-- Table -->
-        <table class="table">
-          <thead>
-          <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-          <% @users.each_with_index do |user, index| %>
-              <tr>
-                <td><%= index +=1 %></td>
-                <td><%= user.name %></td>
-                <td>
-                  <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
-                              "data-sid" => current_user.id, "data-rip" => user.id %>
-                </td>
-              </tr>
-          <% end %>
-
-          </tbody>
-        </table>
+  <div class="container-fluild bootstrap snippet">
+      <div class="tile tile-alt" id="messages-main">
+          <div class="ms-menu">
+            <%= render 'home/current_user' %>
+            <%= render 'home/compose' %>
+            <div class="list-group lg-alt">
+              <%= render 'home/friends', friends: @users %>
+            </div>
+          </div>
+          
+          <div class="ms-body">
+            <%= render 'home/topbar' %>
+            <div id="messages-body %>">
+              <%= render 'conversations/messages', conversation: @conversation %>
+            </div>
+            <div id="messages-form">
+              <%= render 'messages/form', conversation: @conversation %>
+            </div>
+          </div>
       </div>
-
-    </div>
-    <hr>
-    <h3>Your Conversations</h3>
-
-    <div style="height: 400px; overflow-y: auto;">
-      <% if @conversations.any? %>
-          <ul class="media-list">
-            <% @conversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).name %></h4>
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-                  </div>
-                </li>
-
-            <% end %>
-          </ul>
-      <% else %>
-          <p>You have no conversations. Click send message with any user to create one.</p>
-      <% end %>
-    </div>
-
   </div>
-
-  <div class="col-md-4">
-
-  </div>
-
-</div>
+<% end %>
