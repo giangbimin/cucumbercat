@@ -1,8 +1,10 @@
 class MessagesController < ApplicationController
   def create
-    @message = @conversation.messages.create(message_params)
-    @message.user_id = current_user.id
-    if @message.save
+    @conversation = Conversation.find(params[:conversation_id])
+    @page = 10
+    message = @conversation.messages.build(message_params)
+    message.user_id = current_user.id
+    if message.save
       respond_to :js
     end
   end

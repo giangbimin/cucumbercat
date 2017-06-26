@@ -1,10 +1,25 @@
-<%if conversation.present? %>
-<div class="msb-reply">
-  <%= simple_form_for [Conversation.new, Conversation.new.messages.build], remote: true do |f| %>
-      <%= f.text_area :body, placeholder: "What's on your mind..." %>
-      <%= f.button do %>
-        <i class="fa fa-paper-plane-o"></i>
+<div class="compose-box">
+  <div class="row">
+  <%= simple_form_for [conversation, conversation.messages.build], remote: true do |f| %>
+    <div class="col-xs-12 mg-btm-10">
+      <%= f.text_area :body, id: "btn-input", class: "form-control input-sm", placeholder:"Type your message here..."%>
+    </div>
+    <div class="col-xs-8">
+      <button class="btn btn-blue btn-sm">
+          <i class="fa fa-camera"></i>
+      </button>
+      <button class="btn btn-blue btn-sm">
+          <i class="fa fa-video-camera"></i>
+      </button>
+      <button class="btn btn-blue btn-sm">
+          <i class="fa fa-file"></i>
+      </button>
+  </div>
+      <div class="col-xs-4"> 
+      <%= f.button :submit, class: "btn btn-blue btn-sm pull-right" do %>
+        <i class="fa fa-paper-plane-o"></i> Send
       <% end %>
+    </div> 
   <% end %>
+  </div> 
 </div>
-<% end %>

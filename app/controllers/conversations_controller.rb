@@ -12,9 +12,17 @@ class ConversationsController < ApplicationController
 
   def display
     @user_id = params[:user_id]
-    @friend_id = params[:friend_id]
-    @conversation = Conversation.between(@user_id, @friend_id).first.try(:messages)
+    @friend_id = params[:recipient_id]
+    @conversation = Conversation.between(@user_id, @friend_id).first
     @conversation ||= Conversation.create(sender_id: @user_id, recipient_id: @friend_id)
+    @page = 10
+    respond_to :js
+  end
+
+  def load_more
+    @conversation = Conversation.find(params[:conversation_id])
+    @page = params[:page].to_i
+    @page += 10
     respond_to :js
   end
 

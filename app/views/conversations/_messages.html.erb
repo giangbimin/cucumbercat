@@ -1,5 +1,10 @@
-<%if conversation.present? %>
-    <% conversation.messages.each do |message| %>
+<%if conversation.messages.present? %>
+    <%if conversation.messages.count <= page %>
+        <div class="text-center loadmore">
+            <%= link_to 'Load More Messages', conversations_load_more_path(conversation_id: conversation.id, page: page), remote: true, class: 'btn btn-default'%>
+        </div>
+    <% end %>
+    <% conversation.messages.last(page).each do |message| %>
         <div class="message-feed <%= media_or_right(message) %>">
             <div class="pull-<%= left_or_right(message) %>">
                 <img src="<%= message.user.avatar_url || 'https://bootdey.com/img/Content/avatar/avatar1.png' %>" alt="" class="img-avatar">

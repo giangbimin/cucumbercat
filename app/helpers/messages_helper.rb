@@ -4,7 +4,7 @@ module MessagesHelper
   end
 
   def media_or_right(message)
-    message.user == current_user ? 'left' : 'media'
+    message.user == current_user ? 'media' : 'right'
   end
 
   def left_or_right(message)

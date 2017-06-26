@@ -1,11 +1,19 @@
-<% friends.each do |friend| %>
-    <%= link_to conversations_display_path(user_id: current_user.id, recipient_id: friend.id), remote: true, class: 'list-group-item media' do %>
-        <div class="pull-left">
-            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
-        </div>
-        <div class="media-body">
-            <div class="list-group-item-heading"><%= friend.email %></div>
-            <small class="list-group-item-text c-gray"><%= Conversation.last_conversation_message(current_user.id, friend.id) %></small>
-        </div>
+<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 550px;">
+  <div class="chat-list-wrapper" style="overflow-y: auto; width: auto; height: 550px;">
+    <% friends.each do |friend| %>
+        <%= link_to conversations_display_path(user_id: current_user.id, recipient_id: friend.id), remote: true, class: 'list-group-item media' do %>
+            <div class="pull-left">
+                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="img-avatar">
+            </div>
+            <div class="media-body">
+                <div class="list-group-item-heading"><%= friend.email %></div>
+                <small class="list-group-item-text c-gray"><%= Conversation.last_conversation_message(current_user.id, friend.id) %></small>
+            </div>
+        <% end %>
     <% end %>
-<% end %>
+  </div>
+  <div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 478.639px; background: rgb(0, 0, 0);">
+  </div>
+  <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);">
+  </div>
+</div>

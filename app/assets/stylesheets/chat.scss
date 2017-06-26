@@ -212,3 +212,23 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
 }
+
+.compose-box {
+    padding: 15px 10px;
+}
+
+.mg-btm-10 {
+    margin-bottom: 10px !important;
+}
+.btn-blue {
+    background-color: #03a9f4;
+    border-color: #0388f4;
+    color: white;
+}
+.loadmore {
+    display: block;
+    padding: 20px 10px;
+    clear: both;
+    position: relative;
+    color: white;
+}

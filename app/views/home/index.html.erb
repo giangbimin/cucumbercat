@@ -11,8 +11,16 @@
           
           <div class="ms-body">
             <%= render 'home/topbar' %>
-            <div id="messages-body %>">
-              <%= render 'conversations/messages', conversation: @conversation %>
+            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 450px;">
+              <div class="message-list-wrapper" style="overflow-y: auto; width: auto; height: 420px;">
+                <div id="messages-body">
+                  <%= render 'conversations/messages', conversation: @conversation, page: @page %>
+                </div>
+              </div>
+              <div class="slimScrollBar" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 478.639px; background: rgb(0, 0, 0);">
+              </div>
+              <div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);">
+              </div>
             </div>
             <div id="messages-form">
               <%= render 'messages/form', conversation: @conversation %>

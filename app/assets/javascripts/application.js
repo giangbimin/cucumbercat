@@ -17,3 +17,7 @@
 //= require private_pub
 //= require chat
 //= require turbolinks
+
+$(function(){
+    $(".chat-list-wrapper, .message-list-wrapper").niceScroll();
+})

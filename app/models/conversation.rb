@@ -17,4 +17,8 @@ class Conversation < ApplicationRecord
   def self.last_conversation_message(user_id, friend_id)
     Conversation.between(user_id, friend_id).first.try(:messages).try(:last).try(:truncate, 100) || 'hi!'
   end
+
+  def self.self_conversation(user_id)
+    Conversation.between(user_id, user_id).first
+  end
 end
