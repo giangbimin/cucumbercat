@@ -15,6 +15,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def block
+    friend = User.find(params[:friend_id])
+    User.transaction do
+      # for querry in models we using inverse
+      Friendship.find_by(user: friend, friend: current_user).update(blocked: true)
+    end
+  end
+
+  def un_block
+    friend = User.find(params[:friend_id])
+    User.transaction do
+      Friendship.find_by(user: friend, friend: current_user).update(blocked: false)
+    end
+  end
+
   private
 
   def user_params
