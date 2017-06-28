@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20170626092806) do
     t.text "body"
     t.integer "conversation_id"
     t.integer "user_id"
+    t.string "attach_file_url"
+    t.boolean "unread", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"

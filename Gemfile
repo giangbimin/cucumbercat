@@ -22,6 +22,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'private_pub'
 gem 'thin'
 gem 'simple_form', '~> 3.2'
+gem 'faker'
 
 # gem 'capistrano-rails', group: :development
 group :development, :test do

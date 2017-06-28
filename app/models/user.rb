@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   after_create :create_default_conversation
 
-  def block_list
+  def blockers
     block_ids = Friendship.where(friend: self, blocked: true).pluck(:friend_id)
     User.where(id: block_ids)
   end
@@ -21,9 +21,13 @@ class User < ApplicationRecord
     Friendship.find_by(user: self, friend: user).blocked == true
   end
 
+  def find_conversation_by(user)
+    Conversation.between(self.id, user.id).first
+  end
+
   private
 
   def create_default_conversation
-    Conversation.create(sender_id: 1, recipient_id: self.id) unless self.id == 1
+    Conversation.create(sender_id: self.id, recipient_id: self.id) unless self.id == 1
   end
 end
